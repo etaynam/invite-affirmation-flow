@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Check, X, Play, ArrowLeft, Maximize } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
+import { Separator } from "@/components/ui/separator";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 interface VideoInvitationProps {
@@ -103,39 +104,49 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
             className="relative z-10 h-full flex flex-col items-center justify-between p-8"
             style={{ direction: "rtl" }}
           >
-            <div className="text-center text-white mt-12 mb-6 w-full">
-              <h1 className="text-2xl font-bold mb-2 text-shadow-md">ברוכים הבאים לחגיגה של {eventName}!</h1>
-              <p className="text-lg text-shadow-sm">צפו בהזמנה ואשרו את הגעתכם</p>
-            </div>
-
-            <div className="flex-grow flex flex-col justify-center items-center w-full">
+            <div className="flex-grow flex flex-col items-center justify-center text-center text-white w-full gap-4">
+              <h1 className="text-2xl font-bold text-shadow-md">
+                הינכם מוזמנים לחתונה של
+              </h1>
+              <h2 className="text-3xl font-bold mb-2 text-shadow-lg">
+                {eventName}
+              </h2>
               <Button 
-                className="invitation-button flex items-center gap-2 text-xl py-5 px-8 w-3/4 justify-center mb-8 shadow-lg rounded-full"
+                className="invitation-button flex items-center gap-2 text-xl py-5 px-8 w-3/4 justify-center shadow-lg rounded-full mb-2"
                 onClick={handlePlayVideo}
                 variant="ghost"
               >
                 <Play className="h-6 w-6" />
                 צפה בהזמנה
               </Button>
+              <p className="text-base text-shadow-sm opacity-90">
+                צפו בהזמנה ואשרו את הגעתכם
+              </p>
             </div>
 
-            <div className="flex gap-4 w-full justify-center mb-8">
-              <Button
-                onClick={() => onRsvpChoice(true)}
-                className="invitation-button flex items-center gap-2 text-base py-4 px-6 w-[45%] justify-center shadow-lg rounded-full"
-                variant="ghost"
-              >
-                <Check className="h-5 w-5" />
-                אני מגיע/ה
-              </Button>
-              <Button
-                onClick={() => onRsvpChoice(false)}
-                className="invitation-button-outline flex items-center gap-2 text-base py-4 px-6 w-[45%] justify-center shadow-lg rounded-full"
-                variant="ghost"
-              >
-                <X className="h-5 w-5" />
-                לא אוכל להגיע
-              </Button>
+            <div className="w-full space-y-4">
+              <Separator className="bg-white/20 w-full" />
+              <p className="text-white/80 text-sm text-center mb-2">
+                נשמח לדעת אם תוכלו להגיע לשמוח איתנו
+              </p>
+              <div className="flex gap-4 w-full justify-center">
+                <Button
+                  onClick={() => onRsvpChoice(true)}
+                  className="invitation-button flex items-center gap-2 text-base py-4 px-6 w-[45%] justify-center shadow-lg rounded-full"
+                  variant="ghost"
+                >
+                  <Check className="h-5 w-5" />
+                  אני מגיע/ה
+                </Button>
+                <Button
+                  onClick={() => onRsvpChoice(false)}
+                  className="invitation-button-outline flex items-center gap-2 text-base py-4 px-6 w-[45%] justify-center shadow-lg rounded-full"
+                  variant="ghost"
+                >
+                  <X className="h-5 w-5" />
+                  לא אוכל להגיע
+                </Button>
+              </div>
             </div>
           </div>
         )}
