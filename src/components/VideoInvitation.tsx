@@ -1,7 +1,8 @@
+
 import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Check, X, Play, ArrowLeft, Maximize } from "lucide-react";
+import { Check, X, Play, ArrowLeft, Maximize, CalendarDays, Clock, MapPin } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -10,12 +11,18 @@ interface VideoInvitationProps {
   videoUrl: string;
   onRsvpChoice: (attending: boolean) => void;
   eventName?: string;
+  date?: string;
+  time?: string;
+  location?: string;
 }
 
 const VideoInvitation: React.FC<VideoInvitationProps> = ({
   videoUrl,
   onRsvpChoice,
   eventName = "האירוע שלנו",
+  date = "25.05.2025",
+  time = "19:00",
+  location = "אולמי הגן, תל אביב",
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -117,9 +124,24 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
                 <Play className="h-6 w-6" />
                 צפה בהזמנה
               </Button>
-              <p className="text-base text-shadow-sm opacity-90">
+              <p className="text-base text-shadow-sm opacity-90 mb-4">
                 צפו בהזמנה ואשרו את הגעתכם
               </p>
+
+              <div className="flex flex-col gap-2 opacity-80">
+                <div className="flex items-center gap-2 text-sm">
+                  <CalendarDays className="h-4 w-4" />
+                  <span>{date}</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <Clock className="h-4 w-4" />
+                  <span>{time}</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <MapPin className="h-4 w-4" />
+                  <span>{location}</span>
+                </div>
+              </div>
             </div>
 
             <div className="w-full space-y-4">
