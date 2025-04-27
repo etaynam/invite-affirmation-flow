@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -115,7 +116,10 @@ const RsvpForm: React.FC<RsvpFormProps> = ({
 
       <Button 
         type="submit" 
-        className="invitation-button w-full py-4 px-6"
+        className={cn(
+          "invitation-button w-full py-4 px-6 text-white hover:text-white hover:bg-invitation-accent/90",
+          "bg-invitation-accent hover:border-invitation-accent"
+        )}
       >
         אישור הגעה
       </Button>
