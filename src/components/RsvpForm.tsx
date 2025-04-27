@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -108,7 +107,10 @@ const RsvpForm: React.FC<RsvpFormProps> = ({
         </div>
       )}
 
-      <Button type="submit" className="invitation-button w-full">
+      <Button 
+        type="submit" 
+        className="invitation-button w-full py-4 px-6"
+      >
         אישור הגעה
       </Button>
     </form>
