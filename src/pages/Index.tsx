@@ -6,7 +6,6 @@ import ThankYou from "@/components/ThankYou";
 import Footer from "@/components/Footer";
 import { toast } from "sonner";
 
-// Set default video URL
 const DEFAULT_VIDEO_URL = "https://cdn.mabrouk.io/inv/1744995518275.mp4";
 
 const Index = () => {
@@ -14,7 +13,16 @@ const Index = () => {
   const [attending, setAttending] = useState<boolean | null>(null);
   const [guestCount, setGuestCount] = useState<number>(1);
   
-  // This would normally come from backend/API
+  useEffect(() => {
+    const cachedResponse = localStorage.getItem('rsvpResponse');
+    if (cachedResponse) {
+      const { attending: cachedAttending, guestCount: cachedGuestCount } = JSON.parse(cachedResponse);
+      setAttending(cachedAttending);
+      setGuestCount(cachedGuestCount);
+      setStep('thank-you');
+    }
+  }, []);
+
   const eventDetails = {
     eventName: "חתונה של דניאל ויעל",
     date: "25.05.2025",
@@ -30,16 +38,13 @@ const Index = () => {
   };
   
   useEffect(() => {
-    // Set the direction of the HTML element
     document.documentElement.dir = "rtl";
     
-    // Set the accent color from eventDetails
     document.documentElement.style.setProperty(
       "--invitation-accent-color", 
       eventDetails.accentColor
     );
 
-    // Hide the Lovable edit badge
     const searchParams = new URLSearchParams(window.location.search);
     searchParams.set('forceHideBadge', 'true');
     const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
@@ -55,8 +60,11 @@ const Index = () => {
     setAttending(data.attending);
     setGuestCount(data.guestCount);
     
-    // Here you would typically send the data to an API
-    // For now, we'll just show a success toast and move to thank-you
+    localStorage.setItem('rsvpResponse', JSON.stringify({
+      attending: data.attending,
+      guestCount: data.guestCount
+    }));
+    
     toast.success("תודה על האישור!");
     setStep("thank-you");
   };

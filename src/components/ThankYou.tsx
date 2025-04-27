@@ -68,7 +68,32 @@ const ThankYou: React.FC<ThankYouProps> = ({
 
       {attending && (
         <>
-          <div className="bg-gray-50 p-4 rounded-lg mb-6">
+          <div className="bg-invitation-accent bg-opacity-5 p-4 rounded-lg mb-6">
+            <h3 className="font-medium mb-3">רוצים לשלוח מתנה?</h3>
+            <div className="grid grid-cols-2 gap-3">
+              {bitLink && (
+                <Button
+                  className="invitation-button flex items-center justify-center gap-2"
+                  onClick={() => window.open(bitLink, "_blank")}
+                >
+                  <Bitcoin className="h-4 w-4" />
+                  שלח Bit
+                </Button>
+              )}
+              
+              {payboxLink && (
+                <Button
+                  className="invitation-button flex items-center justify-center gap-2"
+                  onClick={() => window.open(payboxLink, "_blank")}
+                >
+                  <CreditCard className="h-4 w-4" />
+                  שלח PayBox
+                </Button>
+              )}
+            </div>
+          </div>
+
+          <div className="bg-gray-50 p-4 rounded-lg">
             <h3 className="font-medium mb-2">אפשרויות נוספות:</h3>
             <div className="grid grid-cols-2 gap-3">
               {calendarLink && (
@@ -100,31 +125,6 @@ const ThankYou: React.FC<ThankYouProps> = ({
                   onClick={() => window.open(videoUrl, "_blank")}
                 >
                   צפייה חוזרת בהזמנה
-                </Button>
-              )}
-            </div>
-          </div>
-
-          <div className="bg-invitation-accent bg-opacity-5 p-4 rounded-lg">
-            <h3 className="font-medium mb-3">רוצים לשלוח מתנה?</h3>
-            <div className="grid grid-cols-2 gap-3">
-              {bitLink && (
-                <Button
-                  className="invitation-button flex items-center justify-center gap-2"
-                  onClick={() => window.open(bitLink, "_blank")}
-                >
-                  <Bitcoin className="h-4 w-4" />
-                  שלח Bit
-                </Button>
-              )}
-              
-              {payboxLink && (
-                <Button
-                  className="invitation-button flex items-center justify-center gap-2"
-                  onClick={() => window.open(payboxLink, "_blank")}
-                >
-                  <CreditCard className="h-4 w-4" />
-                  שלח PayBox
                 </Button>
               )}
             </div>
