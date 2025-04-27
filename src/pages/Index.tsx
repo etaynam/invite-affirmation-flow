@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import VideoInvitation from "@/components/VideoInvitation";
 import EventDetails from "@/components/EventDetails";
@@ -8,18 +9,23 @@ import { toast } from "sonner";
 
 const DEFAULT_VIDEO_URL = "https://cdn.mabrouk.io/inv/1744995518275.mp4";
 
+// Set this to false to disable local storage caching temporarily
+const ENABLE_CACHE = false;
+
 const Index = () => {
   const [step, setStep] = useState<"video" | "form" | "thank-you">("video");
   const [attending, setAttending] = useState<boolean | null>(null);
   const [guestCount, setGuestCount] = useState<number>(1);
   
   useEffect(() => {
-    const cachedResponse = localStorage.getItem('rsvpResponse');
-    if (cachedResponse) {
-      const { attending: cachedAttending, guestCount: cachedGuestCount } = JSON.parse(cachedResponse);
-      setAttending(cachedAttending);
-      setGuestCount(cachedGuestCount);
-      setStep('thank-you');
+    if (ENABLE_CACHE) {
+      const cachedResponse = localStorage.getItem('rsvpResponse');
+      if (cachedResponse) {
+        const { attending: cachedAttending, guestCount: cachedGuestCount } = JSON.parse(cachedResponse);
+        setAttending(cachedAttending);
+        setGuestCount(cachedGuestCount);
+        setStep('thank-you');
+      }
     }
   }, []);
 
@@ -60,10 +66,12 @@ const Index = () => {
     setAttending(data.attending);
     setGuestCount(data.guestCount);
     
-    localStorage.setItem('rsvpResponse', JSON.stringify({
-      attending: data.attending,
-      guestCount: data.guestCount
-    }));
+    if (ENABLE_CACHE) {
+      localStorage.setItem('rsvpResponse', JSON.stringify({
+        attending: data.attending,
+        guestCount: data.guestCount
+      }));
+    }
     
     toast.success("תודה על האישור!");
     setStep("thank-you");
