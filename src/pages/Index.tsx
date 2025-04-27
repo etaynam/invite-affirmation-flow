@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import VideoInvitation from "@/components/VideoInvitation";
 import EventDetails from "@/components/EventDetails";
@@ -9,8 +8,8 @@ import { toast } from "sonner";
 
 const DEFAULT_VIDEO_URL = "https://cdn.mabrouk.io/inv/1744995518275.mp4";
 
-// Set this to false to disable local storage caching temporarily
-const ENABLE_CACHE = false;
+// Set this to true to enable local storage caching
+const ENABLE_CACHE = true;
 
 const Index = () => {
   const [step, setStep] = useState<"video" | "form" | "thank-you">("video");
