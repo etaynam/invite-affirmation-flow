@@ -1,8 +1,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Check, X, Calendar, CalendarPlus, MapPin, CreditCard, Bitcoin, ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Check, X, Calendar, CalendarPlus, MapPin, ArrowRight } from "lucide-react";
 
 interface ThankYouProps {
   attending: boolean;
@@ -65,7 +64,11 @@ const ThankYou: React.FC<ThankYouProps> = ({
               className="invitation-button flex items-center justify-center gap-2"
               onClick={() => window.open(bitLink, "_blank")}
             >
-              <Bitcoin className="h-4 w-4" />
+              <img 
+                src="https://nyadv.co.il/mabrouk/payments-02.svg" 
+                alt="Bit Payment" 
+                className="h-4 w-4 fill-white stroke-white"
+              />
               שלח Bit
             </Button>
           )}
@@ -75,7 +78,11 @@ const ThankYou: React.FC<ThankYouProps> = ({
               className="invitation-button flex items-center justify-center gap-2"
               onClick={() => window.open(payboxLink, "_blank")}
             >
-              <CreditCard className="h-4 w-4" />
+              <img 
+                src="https://nyadv.co.il/mabrouk/payments-01.svg" 
+                alt="Paybox Payment" 
+                className="h-4 w-4 fill-white stroke-white"
+              />
               שלח PayBox
             </Button>
           )}
@@ -136,3 +143,4 @@ const ThankYou: React.FC<ThankYouProps> = ({
 };
 
 export default ThankYou;
+
