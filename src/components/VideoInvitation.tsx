@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -108,6 +109,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
               <Button 
                 className="invitation-button flex items-center gap-2 text-xl py-6 px-10 w-3/4 justify-center mb-10 shadow-lg"
                 onClick={handlePlayVideo}
+                variant="ghost"
               >
                 <Play className="h-6 w-6" />
                 צפה בהזמנה
@@ -118,6 +120,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
               <Button
                 onClick={() => onRsvpChoice(true)}
                 className="invitation-button flex items-center gap-2 text-lg py-5 px-8 w-[45%] justify-center shadow-lg"
+                variant="ghost"
               >
                 <Check className="h-5 w-5" />
                 אני מגיע/ה
@@ -125,6 +128,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
               <Button
                 onClick={() => onRsvpChoice(false)}
                 className="invitation-button-outline flex items-center gap-2 text-lg py-5 px-8 w-[45%] justify-center shadow-lg"
+                variant="ghost"
               >
                 <X className="h-5 w-5" />
                 לא אוכל להגיע
