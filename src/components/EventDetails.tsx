@@ -45,23 +45,38 @@ const EventDetails: React.FC<EventDetailsProps> = ({
         "transition-all duration-300 ease-in-out overflow-hidden",
         expanded 
           ? "max-h-96 opacity-100" 
-          : "max-h-16 opacity-100"
+          : "max-h-12 opacity-100"
       )}>
-        <div className="flex items-center gap-2 mt-4">
-          <Calendar className="h-4 w-4 text-invitation-accent flex-shrink-0" />
-          <div className="flex-grow truncate">
-            <p className="text-sm font-medium">{date}</p>
-            <p className="text-xs text-gray-600">{time}</p>
-          </div>
-        </div>
+        {expanded ? (
+          <>
+            <div className="flex items-center gap-2 mt-4">
+              <Calendar className="h-4 w-4 text-invitation-accent flex-shrink-0" />
+              <div className="flex-grow truncate">
+                <p className="text-sm font-medium">{date}</p>
+                <p className="text-xs text-gray-600">{time}</p>
+              </div>
+            </div>
 
-        <div className="flex items-center gap-2 mt-2">
-          <MapPin className="h-4 w-4 text-invitation-accent flex-shrink-0" />
-          <div className="flex-grow truncate">
-            <p className="text-sm font-medium">{location}</p>
-            <p className="text-xs text-gray-600">{address}</p>
+            <div className="flex items-center gap-2 mt-2">
+              <MapPin className="h-4 w-4 text-invitation-accent flex-shrink-0" />
+              <div className="flex-grow truncate">
+                <p className="text-sm font-medium">{location}</p>
+                <p className="text-xs text-gray-600">{address}</p>
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="flex items-center gap-4 mt-2">
+            <div className="flex items-center gap-1">
+              <Calendar className="h-3 w-3 text-invitation-accent flex-shrink-0" />
+              <span className="text-xs">{`${date}, ${time}`}</span>
+            </div>
+            <div className="flex items-center gap-1 flex-grow truncate">
+              <MapPin className="h-3 w-3 text-invitation-accent flex-shrink-0" />
+              <span className="text-xs truncate">{location}</span>
+            </div>
           </div>
-        </div>
+        )}
 
         <div
           className={cn(
