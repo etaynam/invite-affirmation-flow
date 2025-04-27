@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -118,15 +117,14 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
             <div className="flex gap-6 w-full justify-center mb-16">
               <Button
                 onClick={() => onRsvpChoice(true)}
-                className="invitation-button flex items-center gap-2 text-lg py-5 px-8 w-[45%] justify-center"
+                className="invitation-button flex items-center gap-2 text-lg py-5 px-8 w-[45%] justify-center shadow-lg"
               >
                 <Check className="h-5 w-5" />
                 אני מגיע/ה
               </Button>
               <Button
                 onClick={() => onRsvpChoice(false)}
-                className="invitation-button-outline flex items-center gap-2 text-lg py-5 px-8 w-[45%] justify-center"
-                variant="outline"
+                className="invitation-button-outline flex items-center gap-2 text-lg py-5 px-8 w-[45%] justify-center shadow-lg"
               >
                 <X className="h-5 w-5" />
                 לא אוכל להגיע
