@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import VideoInvitation from "@/components/VideoInvitation";
 import EventDetails from "@/components/EventDetails";
@@ -39,6 +38,12 @@ const Index = () => {
       "--invitation-accent-color", 
       eventDetails.accentColor
     );
+
+    // Hide the Lovable edit badge
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.set('forceHideBadge', 'true');
+    const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+    window.history.replaceState(null, '', newUrl);
   }, []);
 
   const handleRsvpChoice = (choice: boolean) => {

@@ -73,16 +73,16 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
   };
 
   return (
-    <div className="w-full flex justify-center animate-fade-in px-4">
+    <div className="w-full flex justify-center animate-fade-in">
       <div 
         ref={containerRef}
         className={cn(
           "relative overflow-hidden bg-black",
-          "w-[1080px] h-[1920px]",
-          "max-h-screen",
+          "w-[1080px] h-screen",
+          "max-h-[100dvh]",
           "aspect-[9/16]",
           isPlaying ? "z-10 rounded-xl" : "rounded-xl",
-          "mx-4", // Added margin on the sides
+          "mx-4",
         )}
       >
         {!isPlaying && (
@@ -103,14 +103,14 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
             className="relative z-10 h-full flex flex-col items-center justify-between p-8"
             style={{ direction: "rtl" }}
           >
-            <div className="text-center text-white mt-20 mb-10 w-full">
-              <h1 className="text-3xl font-bold mb-4 text-shadow-md">ברוכים הבאים לחגיגה של {eventName}!</h1>
-              <p className="text-xl text-shadow-sm">צפו בהזמנה ואשרו את הגעתכם</p>
+            <div className="text-center text-white mt-12 mb-6 w-full">
+              <h1 className="text-2xl font-bold mb-2 text-shadow-md">ברוכים הבאים לחגיגה של {eventName}!</h1>
+              <p className="text-lg text-shadow-sm">צפו בהזמנה ואשרו את הגעתכם</p>
             </div>
 
             <div className="flex-grow flex flex-col justify-center items-center w-full">
               <Button 
-                className="invitation-button flex items-center gap-2 text-xl py-6 px-10 w-3/4 justify-center mb-10 shadow-lg rounded-full"
+                className="invitation-button flex items-center gap-2 text-xl py-5 px-8 w-3/4 justify-center mb-8 shadow-lg rounded-full"
                 onClick={handlePlayVideo}
                 variant="ghost"
               >
@@ -119,10 +119,10 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
               </Button>
             </div>
 
-            <div className="flex gap-6 w-full justify-center mb-16">
+            <div className="flex gap-4 w-full justify-center mb-8">
               <Button
                 onClick={() => onRsvpChoice(true)}
-                className="invitation-button flex items-center gap-2 text-lg py-5 px-8 w-[45%] justify-center shadow-lg rounded-full"
+                className="invitation-button flex items-center gap-2 text-base py-4 px-6 w-[45%] justify-center shadow-lg rounded-full"
                 variant="ghost"
               >
                 <Check className="h-5 w-5" />
@@ -130,7 +130,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
               </Button>
               <Button
                 onClick={() => onRsvpChoice(false)}
-                className="invitation-button-outline flex items-center gap-2 text-lg py-5 px-8 w-[45%] justify-center shadow-lg rounded-full"
+                className="invitation-button-outline flex items-center gap-2 text-base py-4 px-6 w-[45%] justify-center shadow-lg rounded-full"
                 variant="ghost"
               >
                 <X className="h-5 w-5" />
@@ -177,7 +177,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
           src={videoUrl}
           className={cn(
             "w-full h-full object-contain bg-black",
-            isPlaying ? "block rounded-xl p-2" : "hidden", // Added padding and rounded corners when playing
+            isPlaying ? "block rounded-xl p-2" : "hidden",
           )}
           controls={false}
           onEnded={handleVideoEnd}
