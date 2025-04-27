@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -128,7 +127,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
                 צפו בהזמנה ואשרו את הגעתכם
               </p>
 
-              <div className="flex flex-col gap-2 opacity-80">
+              <div className="flex flex-col gap-2 opacity-80 self-start w-full pl-8">
                 <div className="flex items-center gap-2 text-sm">
                   <CalendarDays className="h-4 w-4" />
                   <span>{date}</span>
