@@ -1,7 +1,8 @@
+
 import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Check, X, Play, ArrowLeft, Maximize, CalendarDays, Clock, MapPin } from "lucide-react";
+import { Check, X, Play, Maximize, CalendarDays, Clock, MapPin } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -183,19 +184,18 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
             </div>
             
             <div className="absolute top-4 left-4 z-20 flex gap-4">
-              <Button 
-                variant="outline" 
-                size="icon"
-                className="rounded-full bg-black bg-opacity-50 text-white border-none"
+              <Button
+                variant="outline"
+                className="rounded-full bg-black/50 text-white border-none text-xs px-4"
                 onClick={handleBackToInvitation}
               >
-                <ArrowLeft className="h-5 w-5" />
+                עדכן הגעה
               </Button>
               
               <Button 
                 variant="outline" 
                 size="icon"
-                className="rounded-full bg-black bg-opacity-50 text-white border-none"
+                className="rounded-full bg-black/50 text-white border-none"
                 onClick={toggleFullscreen}
               >
                 <Maximize className="h-5 w-5" />
@@ -223,3 +223,4 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
 };
 
 export default VideoInvitation;
+
