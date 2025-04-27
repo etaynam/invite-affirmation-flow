@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -74,13 +73,12 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
   };
 
   return (
-    <div className="w-full flex justify-center animate-fade-in">
+    <div className="w-full flex justify-center animate-fade-in h-[100dvh]">
       <div 
         ref={containerRef}
         className={cn(
           "relative overflow-hidden bg-black",
-          "w-[1080px] h-screen",
-          "max-h-[100dvh]",
+          "w-[1080px] h-full max-h-[100dvh]",
           "aspect-[9/16]",
           isPlaying ? "z-10 rounded-xl" : "rounded-xl",
           "mx-4",
@@ -101,7 +99,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
 
         {!isPlaying && (
           <div
-            className="relative z-10 h-full flex flex-col items-center justify-between p-8"
+            className="relative z-10 h-full flex flex-col items-center justify-between p-8 pb-12"
             style={{ direction: "rtl" }}
           >
             <div className="flex-grow flex flex-col items-center justify-center text-center text-white w-full">
@@ -129,7 +127,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
               <p className="text-white/80 text-sm text-center mb-2">
                 נשמח לדעת אם תוכלו להגיע לשמוח איתנו
               </p>
-              <div className="flex gap-4 w-full justify-center">
+              <div className="flex gap-4 w-full justify-center pb-4">
                 <Button
                   onClick={() => onRsvpChoice(true)}
                   className="invitation-button flex items-center gap-2 text-base py-4 px-6 w-[45%] justify-center shadow-lg rounded-full"
