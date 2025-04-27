@@ -104,11 +104,11 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
             className="relative z-10 h-full flex flex-col items-center justify-between p-8"
             style={{ direction: "rtl" }}
           >
-            <div className="flex-grow flex flex-col items-center justify-center text-center text-white w-full gap-4">
-              <h1 className="text-2xl font-bold text-shadow-md">
+            <div className="flex-grow flex flex-col items-center justify-center text-center text-white w-full">
+              <h1 className="text-2xl font-bold text-shadow-md mb-0">
                 הינכם מוזמנים לחתונה של
               </h1>
-              <h2 className="text-3xl font-bold mb-2 text-shadow-lg">
+              <h2 className="text-3xl font-bold mt-1 mb-6 text-shadow-lg">
                 {eventName}
               </h2>
               <Button 
