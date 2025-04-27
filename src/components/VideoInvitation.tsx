@@ -74,24 +74,24 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
             style={{ direction: "rtl" }}
           >
             <Button 
-              className="invitation-button flex items-center gap-2 text-lg"
+              className="invitation-button flex items-center gap-2 text-lg w-[80%] justify-center"
               onClick={handlePlayVideo}
             >
               <Play className="h-5 w-5" />
               צפה בהזמנה
             </Button>
             
-            <div className="flex gap-4 mt-4">
+            <div className="flex gap-4 w-[80%] justify-between">
               <Button
                 onClick={() => onRsvpChoice(true)}
-                className="invitation-button flex items-center gap-2 text-lg"
+                className="invitation-button flex items-center gap-2 text-lg flex-1"
               >
                 <Check className="h-5 w-5" />
                 אני מגיע/ה
               </Button>
               <Button
                 onClick={() => onRsvpChoice(false)}
-                className="invitation-button-outline flex items-center gap-2 text-lg"
+                className="invitation-button-outline flex items-center gap-2 text-lg flex-1"
                 variant="outline"
               >
                 <X className="h-5 w-5" />
