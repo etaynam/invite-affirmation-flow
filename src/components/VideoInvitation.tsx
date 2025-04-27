@@ -102,34 +102,34 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
           >
             <div className="text-center text-white mt-20 mb-10 w-full">
               <h1 className="text-3xl font-bold mb-4 text-shadow-md">ברוכים הבאים לחגיגה של {eventName}!</h1>
-              <p className="text-xl text-shadow-sm">צפו בהזמנה ואשרו את הגעתכם 🎉</p>
+              <p className="text-xl text-shadow-sm">צפו בהזמנה ואשרו את הגעתכם</p>
             </div>
 
             <div className="flex-grow flex flex-col justify-center items-center w-full">
               <Button 
-                className="invitation-button flex items-center gap-2 text-xl py-6 px-10 w-3/4 justify-center mb-10 shadow-lg"
+                className="glass-play-button flex items-center gap-2 text-xl py-6 px-10 w-3/4 justify-center mb-10 shadow-lg"
                 onClick={handlePlayVideo}
               >
                 <Play className="h-6 w-6" />
-                צפה בהזמנה 🎥
+                צפה בהזמנה
               </Button>
             </div>
 
             <div className="flex gap-6 w-full justify-center mb-16">
               <Button
                 onClick={() => onRsvpChoice(true)}
-                className="invitation-button flex items-center gap-2 text-lg py-5 px-6 w-[45%] justify-center"
+                className="glass-button flex items-center gap-2 text-lg py-5 px-6 w-[45%] justify-center"
               >
                 <Check className="h-5 w-5" />
-                אני מגיע/ה ✅
+                אני מגיע/ה
               </Button>
               <Button
                 onClick={() => onRsvpChoice(false)}
-                className="invitation-button-outline flex items-center gap-2 text-lg py-5 px-6 w-[45%] justify-center"
+                className="glass-button-outline flex items-center gap-2 text-lg py-5 px-6 w-[45%] justify-center"
                 variant="outline"
               >
                 <X className="h-5 w-5" />
-                לא אוכל להגיע ❌
+                לא אוכל להגיע
               </Button>
             </div>
           </div>
@@ -182,3 +182,4 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
 };
 
 export default VideoInvitation;
+
