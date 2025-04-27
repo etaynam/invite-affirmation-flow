@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { Play, CalendarDays, Clock, MapPin } from "lucide-react";
+import { Play, CalendarDays, Clock, MapPin, Check, X } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 interface InvitationContentProps {
