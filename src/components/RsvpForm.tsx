@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -45,7 +44,7 @@ const RsvpForm: React.FC<RsvpFormProps> = ({
               "flex items-center gap-2 text-base py-5 px-8 w-[48%] justify-center rounded-xl transition-all",
               attending
                 ? "bg-invitation-accent text-white hover:bg-invitation-accent/90"
-                : "border border-invitation-accent text-invitation-accent hover:bg-white"
+                : "border border-invitation-accent text-black bg-white hover:bg-gray-100"
             )}
             onClick={() => setAttending(true)}
           >
@@ -130,4 +129,3 @@ const RsvpForm: React.FC<RsvpFormProps> = ({
 };
 
 export default RsvpForm;
-
