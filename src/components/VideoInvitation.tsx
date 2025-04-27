@@ -73,15 +73,15 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
   };
 
   return (
-    <div className="w-full flex justify-center animate-fade-in">
+    <div className="w-full flex justify-center animate-fade-in px-4">
       <div 
         ref={containerRef}
         className={cn(
           "relative overflow-hidden bg-black",
-          "w-[1080px] h-[1920px]", // Fixed dimensions for all screens
-          "max-h-screen", // Prevent overflow on smaller screens
-          "aspect-[9/16]", // Maintain aspect ratio
-          isPlaying ? "z-10" : ""
+          "w-[1080px] h-[1920px]",
+          "max-h-screen",
+          "aspect-[9/16]",
+          isPlaying ? "z-10 rounded-xl" : "rounded-xl", // Added rounded corners
         )}
       >
         {/* Background blurred video that plays without sound */}
@@ -89,7 +89,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
           <video
             ref={backgroundVideoRef}
             src={videoUrl}
-            className="absolute inset-0 w-full h-full object-cover opacity-50 blur-md"
+            className="absolute inset-0 w-full h-full object-cover opacity-50 blur-md rounded-xl"
             playsInline
             muted
             loop
@@ -143,7 +143,11 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
         {isPlaying && (
           <>
             <div className="absolute top-0 left-0 w-full z-20">
-              <Progress value={progress} className="h-1 rounded-none bg-gray-500 bg-opacity-30" />
+              <Progress 
+                value={progress} 
+                className="h-1.5 rounded-none bg-gray-500/30" 
+                indicatorClassName="bg-white transition-all duration-200 ease-linear"
+              />
             </div>
             
             <div className="absolute top-4 left-4 z-20 flex gap-4">
@@ -172,7 +176,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
           ref={videoRef}
           src={videoUrl}
           className={cn(
-            "w-full h-full object-contain bg-black",
+            "w-full h-full object-contain bg-black rounded-xl",
             isPlaying ? "block" : "hidden"
           )}
           controls={false}
