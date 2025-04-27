@@ -51,13 +51,13 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
   };
 
   return (
-    <div className="w-full max-w-md mx-auto relative animate-fade-in">
-      <div
-        className={cn(
-          "relative overflow-hidden rounded-xl shadow-lg bg-black",
-          isPlaying ? "z-10" : ""
-        )}
-      >
+    <div className="w-full mx-auto animate-fade-in">
+      <div className={cn(
+        "relative overflow-hidden mx-auto bg-black",
+        "h-screen md:h-[1080px]", // Full height on mobile, 1080px on desktop
+        "w-full md:w-[1920px]",   // Full width on mobile, 1920px on desktop
+        isPlaying ? "z-10" : ""
+      )}>
         {/* Background video that plays silently and automatically */}
         <video
           ref={backgroundVideoRef}
@@ -72,7 +72,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
 
         {!isPlaying && (
           <div
-            className="relative z-10 h-[480px] flex flex-col items-center justify-center p-4 gap-4 backdrop-blur-sm bg-black/30"
+            className="relative z-10 h-full flex flex-col items-center justify-center p-4 gap-4 backdrop-blur-sm bg-black/30"
             style={{ direction: "rtl" }}
           >
             <Button 
@@ -108,7 +108,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
           ref={videoRef}
           src={videoUrl}
           className={cn(
-            "w-full h-auto",
+            "w-full h-full object-contain",
             isPlaying ? "block" : "hidden"
           )}
           controls={isPlaying}
