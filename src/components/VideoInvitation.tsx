@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -81,10 +80,9 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
           "w-[1080px] h-[1920px]",
           "max-h-screen",
           "aspect-[9/16]",
-          isPlaying ? "z-10 rounded-xl" : "rounded-xl", // Added rounded corners
+          isPlaying ? "z-10 rounded-xl" : "rounded-xl",
         )}
       >
-        {/* Background blurred video that plays without sound */}
         {!isPlaying && (
           <video
             ref={backgroundVideoRef}
