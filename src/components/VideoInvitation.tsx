@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -83,6 +84,18 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
           isPlaying ? "z-10" : ""
         )}
       >
+        {/* Background blurred video that plays without sound */}
+        <video
+          ref={backgroundVideoRef}
+          src={videoUrl}
+          className="absolute inset-0 w-full h-full object-cover opacity-50 blur-md"
+          playsInline
+          muted
+          loop
+          autoPlay
+          poster="/placeholder.svg"
+        />
+
         {!isPlaying && (
           <div
             className="relative z-10 h-full flex flex-col items-center justify-between p-8"
