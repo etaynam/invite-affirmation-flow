@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Check, X, Calendar, CalendarPlus, MapPin, ArrowRight } from "lucide-react";
@@ -66,7 +67,7 @@ const ThankYou: React.FC<ThankYouProps> = ({
               <img 
                 src="https://nyadv.co.il/mabrouk/payments-02.svg" 
                 alt="Bit Payment" 
-                className="h-4 w-4 invert"
+                className="h-4 w-4 invert filter brightness-0 invert-[1]"
               />
               שלח Bit
             </Button>
@@ -80,7 +81,7 @@ const ThankYou: React.FC<ThankYouProps> = ({
               <img 
                 src="https://nyadv.co.il/mabrouk/payments-01.svg" 
                 alt="Paybox Payment" 
-                className="h-4 w-4 invert"
+                className="h-4 w-4 invert filter brightness-0 invert-[1]"
               />
               שלח PayBox
             </Button>
