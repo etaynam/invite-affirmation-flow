@@ -1,5 +1,5 @@
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Check, X, Play } from "lucide-react";
@@ -16,6 +16,14 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const backgroundVideoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Auto-play the background video silently when component mounts
+    if (backgroundVideoRef.current) {
+      backgroundVideoRef.current.play().catch(err => console.log("Auto-play prevented:", err));
+    }
+  }, []);
 
   const handlePlayVideo = () => {
     if (videoRef.current) {
@@ -50,11 +58,15 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
           isPlaying ? "z-10" : ""
         )}
       >
+        {/* Background video that plays silently and automatically */}
         <video
-          ref={videoRef}
+          ref={backgroundVideoRef}
           src={videoUrl}
           className="absolute inset-0 w-full h-full object-cover opacity-50 blur-sm"
           playsInline
+          muted
+          loop
+          autoPlay
           poster="/placeholder.svg"
         />
 
@@ -91,6 +103,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
           </div>
         )}
 
+        {/* Main video that plays when user clicks "צפה בהזמנה" */}
         <video
           ref={videoRef}
           src={videoUrl}
