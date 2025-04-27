@@ -184,13 +184,24 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
             </div>
             
             <div className="absolute top-4 left-4 z-20 flex gap-4">
-              <Button
-                variant="outline"
-                className="rounded-full bg-black/50 text-white border-none text-xs px-4"
-                onClick={handleBackToInvitation}
-              >
-                עדכן הגעה
-              </Button>
+              <div className="flex gap-2">
+                <Button
+                  variant="outline"
+                  className="rounded-full bg-black/50 text-white border-none text-xs px-4 hover:bg-black/70"
+                  onClick={() => onRsvpChoice(true)}
+                >
+                  <Check className="h-4 w-4 ml-2" />
+                  אני מגיע/ה
+                </Button>
+                <Button
+                  variant="outline"
+                  className="rounded-full bg-black/50 text-white border-none text-xs px-4 hover:bg-black/70"
+                  onClick={() => onRsvpChoice(false)}
+                >
+                  <X className="h-4 w-4 ml-2" />
+                  לא אוכל להגיע
+                </Button>
+              </div>
               
               <Button 
                 variant="outline" 
@@ -223,4 +234,3 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
 };
 
 export default VideoInvitation;
-
