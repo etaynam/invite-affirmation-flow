@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -19,7 +18,6 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
   const backgroundVideoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Auto-play the background video silently when component mounts
     if (backgroundVideoRef.current) {
       backgroundVideoRef.current.play().catch(err => console.log("Auto-play prevented:", err));
     }
@@ -51,14 +49,14 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
   };
 
   return (
-    <div className="w-full mx-auto animate-fade-in">
+    <div className="w-full flex justify-center animate-fade-in">
       <div className={cn(
-        "relative overflow-hidden mx-auto bg-black",
-        "h-screen md:h-[1080px]", // Full height on mobile, 1080px on desktop
-        "w-full md:w-[1920px]",   // Full width on mobile, 1920px on desktop
+        "relative overflow-hidden bg-black",
+        "w-[1080px] h-[1920px]", // Fixed dimensions for all screens
+        "max-h-screen", // Prevent overflow on smaller screens
+        "aspect-[9/16]", // Maintain aspect ratio
         isPlaying ? "z-10" : ""
       )}>
-        {/* Background video that plays silently and automatically */}
         <video
           ref={backgroundVideoRef}
           src={videoUrl}
@@ -72,38 +70,37 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
 
         {!isPlaying && (
           <div
-            className="relative z-10 h-full flex flex-col items-center justify-center p-4 gap-4 backdrop-blur-sm bg-black/30"
+            className="relative z-10 h-full flex flex-col items-center justify-center p-4 gap-8 backdrop-blur-sm bg-black/30"
             style={{ direction: "rtl" }}
           >
             <Button 
-              className="invitation-button flex items-center gap-2"
+              className="invitation-button flex items-center gap-2 text-lg"
               onClick={handlePlayVideo}
             >
-              <Play className="h-4 w-4" />
+              <Play className="h-5 w-5" />
               צפה בהזמנה
             </Button>
             
-            <div className="flex gap-3 mt-4">
+            <div className="flex gap-4 mt-4">
               <Button
                 onClick={() => onRsvpChoice(true)}
-                className="invitation-button flex items-center gap-2"
+                className="invitation-button flex items-center gap-2 text-lg"
               >
-                <Check className="h-4 w-4" />
+                <Check className="h-5 w-5" />
                 אני מגיע/ה
               </Button>
               <Button
                 onClick={() => onRsvpChoice(false)}
-                className="invitation-button-outline flex items-center gap-2"
+                className="invitation-button-outline flex items-center gap-2 text-lg"
                 variant="outline"
               >
-                <X className="h-4 w-4" />
+                <X className="h-5 w-5" />
                 אני לא מגיע/ה
               </Button>
             </div>
           </div>
         )}
 
-        {/* Main video that plays when user clicks "צפה בהזמנה" */}
         <video
           ref={videoRef}
           src={videoUrl}
