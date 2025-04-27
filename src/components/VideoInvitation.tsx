@@ -85,16 +85,18 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
         )}
       >
         {/* Background blurred video that plays without sound */}
-        <video
-          ref={backgroundVideoRef}
-          src={videoUrl}
-          className="absolute inset-0 w-full h-full object-cover opacity-50 blur-md"
-          playsInline
-          muted
-          loop
-          autoPlay
-          poster="/placeholder.svg"
-        />
+        {!isPlaying && (
+          <video
+            ref={backgroundVideoRef}
+            src={videoUrl}
+            className="absolute inset-0 w-full h-full object-cover opacity-50 blur-md"
+            playsInline
+            muted
+            loop
+            autoPlay
+            poster="/placeholder.svg"
+          />
+        )}
 
         {!isPlaying && (
           <div
@@ -170,7 +172,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
           ref={videoRef}
           src={videoUrl}
           className={cn(
-            "w-full h-full object-contain",
+            "w-full h-full object-contain bg-black",
             isPlaying ? "block" : "hidden"
           )}
           controls={false}
