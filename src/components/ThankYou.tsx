@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Check, X, Calendar, CalendarPlus, MapPin, CreditCard, Bitcoin } from "lucide-react";
+import { Check, X, Calendar, CalendarPlus, MapPin, CreditCard, Bitcoin, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ThankYouProps {
@@ -60,9 +60,10 @@ const ThankYou: React.FC<ThankYouProps> = ({
       <Button 
         variant="outline" 
         onClick={onEdit} 
-        className="w-full mb-6 invitation-button-outline"
+        className="w-full mb-6 invitation-button-outline text-black hover:text-black flex items-center justify-center gap-2"
       >
-        עדכון הגעה
+        התחרטתם? עדכנו את ההגעה שלכם
+        <ArrowRight className="h-4 w-4" />
       </Button>
 
       {attending && (
