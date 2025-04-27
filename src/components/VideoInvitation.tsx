@@ -53,16 +53,14 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
         <video
           ref={videoRef}
           src={videoUrl}
-          className="w-full h-auto"
-          controls={isPlaying}
-          onEnded={handleVideoEnd}
+          className="absolute inset-0 w-full h-full object-cover opacity-50 blur-sm"
           playsInline
           poster="/placeholder.svg"
         />
 
         {!isPlaying && (
           <div
-            className="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center p-4 gap-4"
+            className="relative z-10 h-[480px] flex flex-col items-center justify-center p-4 gap-4 backdrop-blur-sm bg-black/30"
             style={{ direction: "rtl" }}
           >
             <Button 
@@ -92,6 +90,19 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
             </div>
           </div>
         )}
+
+        <video
+          ref={videoRef}
+          src={videoUrl}
+          className={cn(
+            "w-full h-auto",
+            isPlaying ? "block" : "hidden"
+          )}
+          controls={isPlaying}
+          onEnded={handleVideoEnd}
+          playsInline
+          poster="/placeholder.svg"
+        />
       </div>
     </div>
   );
