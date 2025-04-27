@@ -1,7 +1,6 @@
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { Check, X } from "lucide-react";
@@ -38,26 +37,34 @@ const RsvpForm: React.FC<RsvpFormProps> = ({
 
       <div className="mb-6">
         <p className="mb-2 font-medium">האם תגיעו?</p>
-        <RadioGroup
-          value={attending ? "yes" : "no"}
-          onValueChange={(value) => setAttending(value === "yes")}
-          className="flex gap-4"
-        >
-          <div className="flex items-center space-x-2 space-x-reverse">
-            <RadioGroupItem value="yes" id="yes" />
-            <Label htmlFor="yes" className="flex items-center gap-1">
-              <Check className="h-4 w-4 text-invitation-accent" />
-              כן
-            </Label>
-          </div>
-          <div className="flex items-center space-x-2 space-x-reverse">
-            <RadioGroupItem value="no" id="no" />
-            <Label htmlFor="no" className="flex items-center gap-1">
-              <X className="h-4 w-4 text-gray-600" />
-              לא
-            </Label>
-          </div>
-        </RadioGroup>
+        <div className="flex gap-4 w-full">
+          <Button
+            type="button"
+            className={cn(
+              "flex items-center gap-2 text-base py-5 px-8 w-[48%] justify-center rounded-xl transition-all",
+              attending
+                ? "bg-invitation-accent text-white hover:bg-invitation-accent/90"
+                : "border border-invitation-accent text-invitation-accent hover:bg-invitation-accent/10"
+            )}
+            onClick={() => setAttending(true)}
+          >
+            <Check className="h-5 w-5" />
+            כן
+          </Button>
+          <Button
+            type="button"
+            className={cn(
+              "flex items-center gap-2 text-base py-5 px-8 w-[48%] justify-center rounded-xl transition-all",
+              !attending
+                ? "bg-invitation-accent text-white hover:bg-invitation-accent/90"
+                : "border border-invitation-accent text-invitation-accent hover:bg-invitation-accent/10"
+            )}
+            onClick={() => setAttending(false)}
+          >
+            <X className="h-5 w-5" />
+            לא
+          </Button>
+        </div>
       </div>
 
       {attending && (
@@ -118,3 +125,4 @@ const RsvpForm: React.FC<RsvpFormProps> = ({
 };
 
 export default RsvpForm;
+
