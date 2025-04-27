@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -84,17 +83,6 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
           isPlaying ? "z-10" : ""
         )}
       >
-        <video
-          ref={backgroundVideoRef}
-          src={videoUrl}
-          className="absolute inset-0 w-full h-full object-cover opacity-50 blur-sm"
-          playsInline
-          muted
-          loop
-          autoPlay
-          poster="/placeholder.svg"
-        />
-
         {!isPlaying && (
           <div
             className="relative z-10 h-full flex flex-col items-center justify-between p-8"
@@ -107,7 +95,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
 
             <div className="flex-grow flex flex-col justify-center items-center w-full">
               <Button 
-                className="invitation-button flex items-center gap-2 text-xl py-6 px-10 w-3/4 justify-center mb-10 shadow-lg"
+                className="invitation-button flex items-center gap-2 text-xl py-6 px-10 w-3/4 justify-center mb-10 shadow-lg rounded-full"
                 onClick={handlePlayVideo}
                 variant="ghost"
               >
@@ -119,7 +107,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
             <div className="flex gap-6 w-full justify-center mb-16">
               <Button
                 onClick={() => onRsvpChoice(true)}
-                className="invitation-button flex items-center gap-2 text-lg py-5 px-8 w-[45%] justify-center shadow-lg"
+                className="invitation-button flex items-center gap-2 text-lg py-5 px-8 w-[45%] justify-center shadow-lg rounded-full"
                 variant="ghost"
               >
                 <Check className="h-5 w-5" />
@@ -127,7 +115,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
               </Button>
               <Button
                 onClick={() => onRsvpChoice(false)}
-                className="invitation-button-outline flex items-center gap-2 text-lg py-5 px-8 w-[45%] justify-center shadow-lg"
+                className="invitation-button-outline flex items-center gap-2 text-lg py-5 px-8 w-[45%] justify-center shadow-lg rounded-full"
                 variant="ghost"
               >
                 <X className="h-5 w-5" />
