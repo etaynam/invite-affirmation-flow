@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -134,14 +135,35 @@
   }
 
   .glass-play-button {
-    @apply rounded-full px-6 py-2 bg-white/20 backdrop-blur-lg border border-white/30 text-white font-medium transition-all hover:bg-white/30;
+    @apply rounded-full px-6 py-2 bg-white/10 backdrop-blur-[30px] border border-white/20 text-white font-medium transition-all;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(255, 255, 255, 0.1) inset;
+  }
+  
+  .glass-play-button:hover {
+    @apply bg-white/20;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(255, 255, 255, 0.2) inset;
   }
   
   .glass-button {
-    @apply rounded-full px-6 py-2 bg-white/20 backdrop-blur-lg border border-white/30 text-white font-medium transition-all hover:bg-white/30;
+    @apply rounded-full px-6 py-2 bg-white/10 backdrop-blur-[30px] border border-white/20 text-white font-medium transition-all;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(255, 255, 255, 0.1) inset;
+  }
+  
+  .glass-button:hover {
+    @apply bg-white/20;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(255, 255, 255, 0.2) inset;
   }
   
   .glass-button-outline {
-    @apply rounded-full px-6 py-2 bg-transparent backdrop-blur-lg border border-white/30 text-white font-medium transition-all hover:bg-white/20;
+    @apply rounded-full px-6 py-2 bg-transparent backdrop-blur-[30px] border border-white/20 text-white font-medium transition-all;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .glass-button-outline:hover {
+    @apply bg-white/10;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
   }
 }
