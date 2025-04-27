@@ -40,6 +40,7 @@ const RsvpForm: React.FC<RsvpFormProps> = ({
         <div className="flex gap-4 w-full">
           <Button
             type="button"
+            id="attend-yes"
             className={cn(
               "flex items-center gap-2 text-base py-5 px-8 w-[48%] justify-center rounded-xl transition-all",
               attending
@@ -53,11 +54,12 @@ const RsvpForm: React.FC<RsvpFormProps> = ({
           </Button>
           <Button
             type="button"
+            id="attend-no"
             className={cn(
               "flex items-center gap-2 text-base py-5 px-8 w-[48%] justify-center rounded-xl transition-all",
               !attending
                 ? "bg-invitation-accent text-white hover:bg-invitation-accent/90"
-                : "border border-invitation-accent text-invitation-accent hover:bg-white"
+                : "border border-invitation-accent text-black bg-white hover:bg-gray-100"
             )}
             onClick={() => setAttending(false)}
           >
@@ -128,3 +130,4 @@ const RsvpForm: React.FC<RsvpFormProps> = ({
 };
 
 export default RsvpForm;
+
