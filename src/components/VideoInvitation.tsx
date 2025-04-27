@@ -154,7 +154,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
               <div className="flex gap-4 w-full justify-center pb-4">
                 <Button
                   onClick={() => onRsvpChoice(true)}
-                  className="invitation-button flex items-center gap-2 text-base py-5 px-8 w-[45%] justify-center shadow-lg rounded-full"
+                  className="invitation-button flex items-center gap-2 text-base py-5 px-8 w-[45%] justify-center shadow-lg rounded-full border border-white/20 hover:border-white/30"
                   variant="ghost"
                 >
                   <Check className="h-5 w-5" />
@@ -162,7 +162,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
                 </Button>
                 <Button
                   onClick={() => onRsvpChoice(false)}
-                  className="invitation-button-outline flex items-center gap-2 text-base py-5 px-8 w-[45%] justify-center shadow-lg rounded-full"
+                  className="invitation-button-outline flex items-center gap-2 text-base py-5 px-8 w-[45%] justify-center shadow-lg rounded-full border border-white/20 hover:border-white/30"
                   variant="ghost"
                 >
                   <X className="h-5 w-5" />
