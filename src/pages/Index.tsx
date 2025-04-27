@@ -63,19 +63,19 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <main className="flex-grow container max-w-md mx-auto px-4 py-8">
+        <div className="text-center mb-8">
+          <h1 className="text-2xl font-bold">{eventDetails.eventName}</h1>
+        </div>
+
         {step === "video" && (
           <VideoInvitation
             videoUrl={DEFAULT_VIDEO_URL}
             onRsvpChoice={handleRsvpChoice}
-            eventName={eventDetails.eventName}
           />
         )}
 
         {step === "form" && (
           <>
-            <div className="text-center mb-8">
-              <h1 className="text-2xl font-bold">{eventDetails.eventName}</h1>
-            </div>
             <EventDetails
               date={eventDetails.date}
               time={eventDetails.time}
@@ -93,9 +93,6 @@ const Index = () => {
 
         {step === "thank-you" && attending !== null && (
           <>
-            <div className="text-center mb-8">
-              <h1 className="text-2xl font-bold">{eventDetails.eventName}</h1>
-            </div>
             <EventDetails
               date={eventDetails.date}
               time={eventDetails.time}
