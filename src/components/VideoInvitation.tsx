@@ -127,7 +127,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
                 צפו בהזמנה ואשרו את הגעתכם
               </p>
 
-              <div className="flex flex-col gap-2 opacity-80 self-start w-full pl-8">
+              <div className="flex flex-col gap-2 opacity-80 w-full">
                 <div className="flex items-center justify-center gap-4 text-sm w-full">
                   <div className="flex items-center gap-2">
                     <CalendarDays className="h-4 w-4" />
