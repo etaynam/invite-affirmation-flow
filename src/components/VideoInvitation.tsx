@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -81,6 +82,7 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
           "max-h-screen",
           "aspect-[9/16]",
           isPlaying ? "z-10 rounded-xl" : "rounded-xl",
+          "mx-4", // Added margin on the sides
         )}
       >
         {!isPlaying && (
@@ -174,8 +176,8 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
           ref={videoRef}
           src={videoUrl}
           className={cn(
-            "w-full h-full object-contain bg-black rounded-xl",
-            isPlaying ? "block" : "hidden"
+            "w-full h-full object-contain bg-black",
+            isPlaying ? "block rounded-xl p-2" : "hidden", // Added padding and rounded corners when playing
           )}
           controls={false}
           onEnded={handleVideoEnd}
