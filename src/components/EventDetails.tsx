@@ -41,39 +41,46 @@ const EventDetails: React.FC<EventDetailsProps> = ({
         </Button>
       </div>
 
-      <div className="flex items-center gap-2 mt-4">
-        <Calendar className="h-5 w-5 text-invitation-accent flex-shrink-0" />
-        <div>
-          <p className="font-medium">{date}</p>
-          <p className="text-sm text-gray-600">{time}</p>
+      <div className={cn(
+        "transition-all duration-300 ease-in-out overflow-hidden",
+        expanded 
+          ? "max-h-96 opacity-100" 
+          : "max-h-16 opacity-100"
+      )}>
+        <div className="flex items-center gap-2 mt-4">
+          <Calendar className="h-4 w-4 text-invitation-accent flex-shrink-0" />
+          <div className="flex-grow truncate">
+            <p className="text-sm font-medium">{date}</p>
+            <p className="text-xs text-gray-600">{time}</p>
+          </div>
         </div>
-      </div>
 
-      <div className="flex items-center gap-2 mt-4">
-        <MapPin className="h-5 w-5 text-invitation-accent flex-shrink-0" />
-        <div>
-          <p className="font-medium">{location}</p>
-          <p className="text-sm text-gray-600">{address}</p>
+        <div className="flex items-center gap-2 mt-2">
+          <MapPin className="h-4 w-4 text-invitation-accent flex-shrink-0" />
+          <div className="flex-grow truncate">
+            <p className="text-sm font-medium">{location}</p>
+            <p className="text-xs text-gray-600">{address}</p>
+          </div>
         </div>
-      </div>
 
-      <div
-        className={cn(
-          "overflow-hidden transition-all",
-          expanded ? "max-h-96 mt-4" : "max-h-0"
-        )}
-      >
-        {notes && <p className="text-sm text-gray-700 mt-2">{notes}</p>}
+        <div
+          className={cn(
+            "overflow-hidden transition-all duration-300 ease-in-out",
+            expanded ? "max-h-96 mt-4 opacity-100" : "max-h-0 opacity-0"
+          )}
+        >
+          {notes && <p className="text-sm text-gray-700 mt-2">{notes}</p>}
 
-        {wazeLink && (
-          <Button
-            className="invitation-button mt-4 w-full"
-            onClick={() => window.open(wazeLink, "_blank")}
-          >
-            <MapPin className="h-4 w-4 mr-2" />
-            פתח ב-Waze
-          </Button>
-        )}
+          {wazeLink && (
+            <Button
+              className="invitation-button mt-4 w-full"
+              onClick={() => window.open(wazeLink, "_blank")}
+            >
+              <MapPin className="h-4 w-4 mr-2" />
+              פתח ב-Waze
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );
