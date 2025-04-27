@@ -128,11 +128,13 @@ const VideoInvitation: React.FC<VideoInvitationProps> = ({
               </p>
 
               <div className="flex flex-col gap-2 opacity-80 self-start w-full pl-8">
-                <div className="flex items-center gap-2 text-sm">
+                <div className="flex items-center justify-center gap-4 text-sm w-full">
                   <div className="flex items-center gap-2">
                     <CalendarDays className="h-4 w-4" />
                     <span>{date}</span>
-                    <Clock className="h-4 w-4 mr-2" />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Clock className="h-4 w-4" />
                     <span>{time}</span>
                   </div>
                 </div>
