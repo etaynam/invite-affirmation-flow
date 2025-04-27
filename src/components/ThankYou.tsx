@@ -57,6 +57,31 @@ const ThankYou: React.FC<ThankYouProps> = ({
         </p>
       )}
 
+      <div className="bg-invitation-accent bg-opacity-5 p-4 rounded-lg mb-6">
+        <h3 className="font-medium mb-3">רוצים לשלוח מתנה?</h3>
+        <div className="grid grid-cols-2 gap-3">
+          {bitLink && (
+            <Button
+              className="invitation-button flex items-center justify-center gap-2"
+              onClick={() => window.open(bitLink, "_blank")}
+            >
+              <Bitcoin className="h-4 w-4" />
+              שלח Bit
+            </Button>
+          )}
+          
+          {payboxLink && (
+            <Button
+              className="invitation-button flex items-center justify-center gap-2"
+              onClick={() => window.open(payboxLink, "_blank")}
+            >
+              <CreditCard className="h-4 w-4" />
+              שלח PayBox
+            </Button>
+          )}
+        </div>
+      </div>
+
       <Button 
         variant="outline" 
         onClick={onEdit} 
@@ -67,69 +92,44 @@ const ThankYou: React.FC<ThankYouProps> = ({
       </Button>
 
       {attending && (
-        <>
-          <div className="bg-invitation-accent bg-opacity-5 p-4 rounded-lg mb-6">
-            <h3 className="font-medium mb-3">רוצים לשלוח מתנה?</h3>
-            <div className="grid grid-cols-2 gap-3">
-              {bitLink && (
-                <Button
-                  className="invitation-button flex items-center justify-center gap-2"
-                  onClick={() => window.open(bitLink, "_blank")}
-                >
-                  <Bitcoin className="h-4 w-4" />
-                  שלח Bit
-                </Button>
-              )}
-              
-              {payboxLink && (
-                <Button
-                  className="invitation-button flex items-center justify-center gap-2"
-                  onClick={() => window.open(payboxLink, "_blank")}
-                >
-                  <CreditCard className="h-4 w-4" />
-                  שלח PayBox
-                </Button>
-              )}
-            </div>
+        <div className="bg-gray-50 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">אפשרויות נוספות:</h3>
+          <div className="grid grid-cols-2 gap-3">
+            {calendarLink && (
+              <Button 
+                variant="outline" 
+                className="flex items-center justify-center gap-2"
+                onClick={() => window.open(calendarLink, "_blank")}
+              >
+                <CalendarPlus className="h-4 w-4" />
+                הוסף ליומן
+              </Button>
+            )}
+            
+            {wazeLink && (
+              <Button 
+                variant="outline"
+                className="flex items-center justify-center gap-2"
+                onClick={() => window.open(wazeLink, "_blank")}
+              >
+                <MapPin className="h-4 w-4" />
+                נווט ב-Waze
+              </Button>
+            )}
           </div>
+        </div>
+      )}
 
-          <div className="bg-gray-50 p-4 rounded-lg">
-            <h3 className="font-medium mb-2">אפשרויות נוספות:</h3>
-            <div className="grid grid-cols-2 gap-3">
-              {calendarLink && (
-                <Button 
-                  variant="outline" 
-                  className="flex items-center justify-center gap-2"
-                  onClick={() => window.open(calendarLink, "_blank")}
-                >
-                  <CalendarPlus className="h-4 w-4" />
-                  הוסף ליומן
-                </Button>
-              )}
-              
-              {wazeLink && (
-                <Button 
-                  variant="outline"
-                  className="flex items-center justify-center gap-2"
-                  onClick={() => window.open(wazeLink, "_blank")}
-                >
-                  <MapPin className="h-4 w-4" />
-                  נווט ב-Waze
-                </Button>
-              )}
-              
-              {videoUrl && (
-                <Button 
-                  variant="outline"
-                  className="flex items-center justify-center gap-2 col-span-2"
-                  onClick={() => window.open(videoUrl, "_blank")}
-                >
-                  צפייה חוזרת בהזמנה
-                </Button>
-              )}
-            </div>
-          </div>
-        </>
+      {videoUrl && (
+        <div className="mt-4">
+          <Button 
+            variant="outline"
+            className="w-full flex items-center justify-center gap-2"
+            onClick={() => window.open(videoUrl, "_blank")}
+          >
+            צפייה חוזרת בהזמנה
+          </Button>
+        </div>
       )}
     </div>
   );
