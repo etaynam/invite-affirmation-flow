@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react";
 import VideoInvitation from "@/components/VideoInvitation";
+import SimpleInvitation from "@/components/SimpleInvitation";
 import EventDetails from "@/components/EventDetails";
 import RsvpForm from "@/components/RsvpForm";
 import ThankYou from "@/components/ThankYou";
 import Footer from "@/components/Footer";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 
 const DEFAULT_VIDEO_URL = "https://cdn.mabrouk.io/inv/1744995518275.mp4";
 
 // Set this to true to enable local storage caching
 const ENABLE_CACHE = true;
 
+type ViewStyle = "video" | "simple";
+
 const Index = () => {
   const [step, setStep] = useState<"video" | "form" | "thank-you">("video");
   const [attending, setAttending] = useState<boolean | null>(null);
   const [guestCount, setGuestCount] = useState<number>(1);
+  const [viewStyle, setViewStyle] = useState<ViewStyle>("video");
   
   useEffect(() => {
     if (ENABLE_CACHE) {
@@ -80,14 +85,46 @@ const Index = () => {
     setStep("form");
   };
 
+  const handlePlayVideo = () => {
+    setViewStyle("video");
+    setStep("video");
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
+      {/* Style Switcher - For Demo Only */}
+      <div className="fixed top-4 left-4 z-50 bg-white rounded-lg shadow-lg p-2 flex gap-2">
+        <Button
+          variant={viewStyle === "video" ? "default" : "outline"}
+          onClick={() => setViewStyle("video")}
+          className="text-xs"
+        >
+          תצוגה 1
+        </Button>
+        <Button
+          variant={viewStyle === "simple" ? "default" : "outline"}
+          onClick={() => setViewStyle("simple")}
+          className="text-xs"
+        >
+          תצוגה 2
+        </Button>
+      </div>
+
       <main className="flex-grow container max-w-md mx-auto px-4 py-8">
-        {step === "video" && (
+        {viewStyle === "video" && step === "video" && (
           <VideoInvitation
             videoUrl={DEFAULT_VIDEO_URL}
             onRsvpChoice={handleRsvpChoice}
             eventName={eventDetails.eventName}
+          />
+        )}
+
+        {viewStyle === "simple" && step === "video" && (
+          <SimpleInvitation
+            eventName={eventDetails.eventName}
+            eventDetails={eventDetails}
+            onRsvpSubmit={handleFormSubmit}
+            onPlayVideo={handlePlayVideo}
           />
         )}
 
