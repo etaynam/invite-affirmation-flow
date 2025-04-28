@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import EventDetails from "@/components/EventDetails";
@@ -26,18 +25,23 @@ const SimpleInvitation: React.FC<SimpleInvitationProps> = ({
   onRsvpSubmit,
   defaultAttending,
 }) => {
+  const scrollToForm = () => {
+    const formSection = document.querySelector('section:nth-child(2)');
+    formSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="h-[100dvh] snap-y snap-mandatory overflow-y-scroll">
       {/* Video Section */}
       <section className="relative h-[100dvh] w-full snap-start">
         <video
           autoPlay
-          muted
-          loop
+          loop={false}
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
           poster="/placeholder.svg"
           src="https://cdn.mabrouk.io/inv/1744995518275.mp4"
+          onEnded={scrollToForm}
         />
         <div className="absolute inset-0 flex flex-col items-center justify-between p-8">
           <div /> {/* Empty div for spacing */}
