@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 const DEFAULT_VIDEO_URL = "https://cdn.mabrouk.io/inv/1744995518275.mp4";
 
 // Set this to true to enable local storage caching
-const ENABLE_CACHE = true;
+const ENABLE_CACHE = false;
 
 type ViewStyle = "video" | "simple";
 
