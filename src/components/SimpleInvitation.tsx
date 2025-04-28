@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import EventDetails from "@/components/EventDetails";
@@ -32,7 +31,6 @@ const SimpleInvitation: React.FC<SimpleInvitationProps> = ({
   };
 
   const handleRsvpClick = (attending: boolean) => {
-    onRsvpSubmit({ attending, guestCount: 1 });
     scrollToForm();
   };
 
@@ -51,13 +49,14 @@ const SimpleInvitation: React.FC<SimpleInvitationProps> = ({
         />
         <div className="absolute inset-0 flex flex-col items-center justify-between p-8">
           <div /> {/* Empty div for spacing */}
-          <div className="relative z-10 text-center mb-12">
+          <div className="relative z-10 text-center mb-12 animate-pulse">
             <p className="text-white text-lg font-medium mb-4">האם אתם מגיעים לאירוע?</p>
             <div className="flex gap-4 justify-center">
               <Button
                 onClick={() => handleRsvpClick(true)}
                 variant="ghost"
                 className="invitation-button flex items-center gap-2 text-base py-5 px-8"
+                style={{ background: 'rgba(255, 255, 255, 0.15)' }}
               >
                 <Check className="h-5 w-5" />
                 מגיע/ה
@@ -66,6 +65,7 @@ const SimpleInvitation: React.FC<SimpleInvitationProps> = ({
                 onClick={() => handleRsvpClick(false)}
                 variant="ghost"
                 className="invitation-button flex items-center gap-2 text-base py-5 px-8"
+                style={{ background: 'rgba(255, 255, 255, 0.15)' }}
               >
                 <X className="h-5 w-5" />
                 לא מגיע/ה
