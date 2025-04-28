@@ -3,7 +3,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import EventDetails from "@/components/EventDetails";
 import RsvpForm from "@/components/RsvpForm";
-import { Play } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 
 interface SimpleInvitationProps {
   eventName: string;
@@ -24,37 +24,52 @@ const SimpleInvitation: React.FC<SimpleInvitationProps> = ({
   eventName,
   eventDetails,
   onRsvpSubmit,
-  onPlayVideo,
   defaultAttending,
 }) => {
   return (
-    <div className="w-full max-w-md mx-auto px-4 py-8 animate-fade-in">
-      <div className="text-center mb-8">
-        <h1 className="text-2xl font-bold">{eventName}</h1>
-      </div>
+    <div className="h-[100dvh] snap-y snap-mandatory overflow-y-scroll">
+      {/* Video Section */}
+      <section className="relative h-[100dvh] w-full snap-start">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          poster="/placeholder.svg"
+          src="https://cdn.mabrouk.io/inv/1744995518275.mp4"
+        />
+        <div className="absolute inset-0 flex flex-col items-center justify-between p-8 text-white">
+          <div /> {/* Empty div for spacing */}
+          <div className="text-center mb-12">
+            <p className="text-lg font-light mb-4">גלול למטה לאישור הגעה</p>
+            <ArrowDown className="animate-bounce mx-auto h-8 w-8" />
+          </div>
+        </div>
+      </section>
 
-      <Button
-        onClick={onPlayVideo}
-        variant="outline"
-        className="w-full mb-6 py-6 text-base flex items-center justify-center gap-2 border-invitation-accent text-invitation-accent hover:bg-invitation-accent hover:text-white transition-colors"
-      >
-        <Play className="h-5 w-5" />
-        צפייה בהזמנה המקורית
-      </Button>
+      {/* Form Section */}
+      <section className="min-h-[100dvh] w-full snap-start bg-gray-50 px-4 py-8">
+        <div className="max-w-md mx-auto">
+          <div className="text-center mb-8">
+            <h1 className="text-2xl font-bold">{eventName}</h1>
+          </div>
 
-      <EventDetails
-        date={eventDetails.date}
-        time={eventDetails.time}
-        location={eventDetails.location}
-        address={eventDetails.address}
-        notes={eventDetails.notes}
-        wazeLink={eventDetails.wazeLink}
-      />
+          <EventDetails
+            date={eventDetails.date}
+            time={eventDetails.time}
+            location={eventDetails.location}
+            address={eventDetails.address}
+            notes={eventDetails.notes}
+            wazeLink={eventDetails.wazeLink}
+          />
 
-      <RsvpForm
-        onSubmit={onRsvpSubmit}
-        defaultAttending={defaultAttending}
-      />
+          <RsvpForm
+            onSubmit={onRsvpSubmit}
+            defaultAttending={defaultAttending}
+          />
+        </div>
+      </section>
     </div>
   );
 };
