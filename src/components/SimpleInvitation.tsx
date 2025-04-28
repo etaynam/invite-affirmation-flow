@@ -56,6 +56,7 @@ const SimpleInvitation: React.FC<SimpleInvitationProps> = ({
             <div className="flex gap-4 justify-center">
               <Button
                 onClick={() => handleRsvpClick(true)}
+                variant="ghost"
                 className="invitation-button flex items-center gap-2 text-base py-5 px-8"
               >
                 <Check className="h-5 w-5" />
@@ -63,6 +64,7 @@ const SimpleInvitation: React.FC<SimpleInvitationProps> = ({
               </Button>
               <Button
                 onClick={() => handleRsvpClick(false)}
+                variant="ghost"
                 className="invitation-button flex items-center gap-2 text-base py-5 px-8"
               >
                 <X className="h-5 w-5" />
