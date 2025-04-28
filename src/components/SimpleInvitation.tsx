@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import EventDetails from "@/components/EventDetails";
 import RsvpForm from "@/components/RsvpForm";
-import { ArrowDown } from "lucide-react";
+import { Check, X } from "lucide-react";
 
 interface SimpleInvitationProps {
   eventName: string;
@@ -30,6 +30,11 @@ const SimpleInvitation: React.FC<SimpleInvitationProps> = ({
     formSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const handleRsvpClick = (attending: boolean) => {
+    onRsvpSubmit({ attending, guestCount: 1 });
+    scrollToForm();
+  };
+
   return (
     <div className="h-[100dvh] snap-y snap-mandatory overflow-y-scroll">
       {/* Video Section */}
@@ -45,9 +50,24 @@ const SimpleInvitation: React.FC<SimpleInvitationProps> = ({
         />
         <div className="absolute inset-0 flex flex-col items-center justify-between p-8">
           <div /> {/* Empty div for spacing */}
-          <div className="relative z-10 text-center mb-12 text-white">
-            <p className="text-lg font-light mb-4">גלול למטה לאישור הגעה</p>
-            <ArrowDown className="animate-bounce mx-auto h-8 w-8" />
+          <div className="relative z-10 text-center mb-12">
+            <p className="text-white text-lg font-medium mb-4">האם אתם מגיעים לאירוע?</p>
+            <div className="flex gap-4 justify-center">
+              <Button
+                onClick={() => handleRsvpClick(true)}
+                className="invitation-button flex items-center gap-2 text-base py-5 px-8"
+              >
+                <Check className="h-5 w-5" />
+                מגיע/ה
+              </Button>
+              <Button
+                onClick={() => handleRsvpClick(false)}
+                className="invitation-button flex items-center gap-2 text-base py-5 px-8"
+              >
+                <X className="h-5 w-5" />
+                לא מגיע/ה
+              </Button>
+            </div>
           </div>
           {/* Gradient overlay */}
           <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black/60 to-transparent" />
