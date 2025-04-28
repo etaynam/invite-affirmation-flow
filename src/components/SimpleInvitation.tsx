@@ -39,12 +39,14 @@ const SimpleInvitation: React.FC<SimpleInvitationProps> = ({
           poster="/placeholder.svg"
           src="https://cdn.mabrouk.io/inv/1744995518275.mp4"
         />
-        <div className="absolute inset-0 flex flex-col items-center justify-between p-8 text-white">
+        <div className="absolute inset-0 flex flex-col items-center justify-between p-8">
           <div /> {/* Empty div for spacing */}
-          <div className="text-center mb-12">
+          <div className="relative z-10 text-center mb-12 text-white">
             <p className="text-lg font-light mb-4">גלול למטה לאישור הגעה</p>
             <ArrowDown className="animate-bounce mx-auto h-8 w-8" />
           </div>
+          {/* Gradient overlay */}
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black/60 to-transparent" />
         </div>
       </section>
 
