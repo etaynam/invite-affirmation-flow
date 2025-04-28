@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import EventDetails from "@/components/EventDetails";
 import RsvpForm from "@/components/RsvpForm";
-import { Check, X } from "lucide-react";
+import { Check, X, Play } from "lucide-react";
 
 interface SimpleInvitationProps {
   eventName: string;
@@ -25,6 +25,8 @@ const SimpleInvitation: React.FC<SimpleInvitationProps> = ({
   onRsvpSubmit,
   defaultAttending,
 }) => {
+  const [videoEnded, setVideoEnded] = useState(false);
+
   const scrollToForm = () => {
     const formSection = document.querySelector('section:nth-child(2)');
     formSection?.scrollIntoView({ behavior: 'smooth' });
@@ -32,6 +34,15 @@ const SimpleInvitation: React.FC<SimpleInvitationProps> = ({
 
   const handleRsvpClick = (attending: boolean) => {
     scrollToForm();
+  };
+
+  const handlePlayVideo = () => {
+    const video = document.querySelector('video');
+    if (video) {
+      video.currentTime = 0;
+      video.play();
+      setVideoEnded(false);
+    }
   };
 
   return (
@@ -45,32 +56,49 @@ const SimpleInvitation: React.FC<SimpleInvitationProps> = ({
           className="absolute inset-0 w-full h-full object-cover"
           poster="/placeholder.svg"
           src="https://cdn.mabrouk.io/inv/1744995518275.mp4"
-          onEnded={scrollToForm}
+          onEnded={() => {
+            setVideoEnded(true);
+            scrollToForm();
+          }}
         />
         <div className="absolute inset-0 flex flex-col items-center justify-between p-8">
           <div /> {/* Empty div for spacing */}
           <div className="relative z-10 text-center mb-12 animate-pulse">
-            <p className="text-white text-lg font-medium mb-4">האם אתם מגיעים לאירוע?</p>
-            <div className="flex gap-4 justify-center">
+            {videoEnded ? (
               <Button
-                onClick={() => handleRsvpClick(true)}
+                onClick={handlePlayVideo}
                 variant="ghost"
                 className="invitation-button flex items-center gap-2 text-base py-5 px-8"
-                style={{ background: 'rgba(255, 255, 255, 0.15)' }}
+                style={{ background: 'rgba(0, 0, 0, 0.1)' }}
               >
-                <Check className="h-5 w-5" />
-                מגיע/ה
+                <Play className="h-5 w-5" />
+                הפעל מחדש
               </Button>
-              <Button
-                onClick={() => handleRsvpClick(false)}
-                variant="ghost"
-                className="invitation-button flex items-center gap-2 text-base py-5 px-8"
-                style={{ background: 'rgba(255, 255, 255, 0.15)' }}
-              >
-                <X className="h-5 w-5" />
-                לא מגיע/ה
-              </Button>
-            </div>
+            ) : (
+              <>
+                <p className="text-white text-lg font-medium mb-4">האם אתם מגיעים לאירוע?</p>
+                <div className="flex gap-4 justify-center">
+                  <Button
+                    onClick={() => handleRsvpClick(true)}
+                    variant="ghost"
+                    className="invitation-button flex items-center gap-2 text-base py-5 px-8"
+                    style={{ background: 'rgba(0, 0, 0, 0.1)' }}
+                  >
+                    <Check className="h-5 w-5" />
+                    מגיע/ה
+                  </Button>
+                  <Button
+                    onClick={() => handleRsvpClick(false)}
+                    variant="ghost"
+                    className="invitation-button flex items-center gap-2 text-base py-5 px-8"
+                    style={{ background: 'rgba(0, 0, 0, 0.1)' }}
+                  >
+                    <X className="h-5 w-5" />
+                    לא מגיע/ה
+                  </Button>
+                </div>
+              </>
+            )}
           </div>
           {/* Gradient overlay */}
           <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black/60 to-transparent" />
